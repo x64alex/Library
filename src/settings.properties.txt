@@ -1,5 +1,5 @@
-repository = text
-book = book.txt
-clients = client.txt
-rentals = rental.txt
+repository = inmemory
+book = ''
+clients = ''
+rentals = ''
 ui = GUI

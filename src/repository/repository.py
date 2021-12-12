@@ -1,7 +1,7 @@
 from src.domain.book import Book
 from src.domain.client import Client
 from src.domain.rental import Rental
-
+from src.module.module import DataStructure
 import os
 from datetime import date
 import unittest
@@ -14,7 +14,7 @@ class BookFunctions:
     """
 
     def __init__(self):
-        self.books = self.generate_books()
+        self.books = DataStructure(self.generate_books())
 
     def generate_books(self):
         """
@@ -45,12 +45,12 @@ class BookFunctions:
         :param id1: given id
         :return: The book with the given id
         """
-        for bk in self.books:
+        for bk in self.books.get_list:
             if bk.id == id1:
                 return bk
 
     def check_book_id(self, book_id):
-        for bk in self.books:
+        for bk in self.books.get_list:
             if bk.id == book_id:
                 return False
         return True
@@ -72,7 +72,7 @@ class BookFunctions:
         :param book_id: the given book id
         :return:
         """
-        for bk in self.books:
+        for bk in self.books.get_list:
             if bk.id == book_id:
                 self.books.pop(self.books.index(bk))
 
@@ -98,7 +98,7 @@ class BookFunctions:
         list_books = []
         value = val.lower()
 
-        for book in self.books:
+        for book in self.books.get_list:
             id1 = book.id
             title = book.title.lower()
             author = book.author.lower()
@@ -198,7 +198,7 @@ class ClientFunctions:
     """
 
     def __init__(self):
-        self.clients = self.generate_clients()
+        self.clients = DataStructure(self.generate_clients())
 
     def generate_clients(self):
         """
@@ -222,7 +222,7 @@ class ClientFunctions:
         :param client_id: given id
         :return: True if it is not False if it is
         """
-        for cl in self.clients:
+        for cl in self.clients.get_list:
             if cl.id == client_id:
                 return False
         return True
@@ -242,7 +242,7 @@ class ClientFunctions:
         :param id1: given id
         :return: The client with the given id
         """
-        for cl in self.clients:
+        for cl in self.clients.get_list:
             if cl.id == id1:
                 return cl
 
@@ -276,7 +276,7 @@ class ClientFunctions:
         list_clients = []
         value = val.lower()
 
-        for client in self.clients:
+        for client in self.clients.get_list:
             id1 = client.id
             name = client.name.lower()
 
@@ -367,15 +367,15 @@ class RentalFunctions:
     """
 
     def __init__(self):
-        self.rentals = []
+        self.rentals = DataStructure([])
 
     def print_rentals(self):
-        for rent in self.rentals:
+        for rent in self.rentals.get_list:
             print(rent)
 
     def last_rented_book(self, book_id, client_id):
         rent = Rental
-        for rental in self.rentals:
+        for rental in self.rentals.get_list:
             if rental.book_id == book_id and rental.client_id == client_id:
                 rent = rental
         return rent
@@ -406,7 +406,7 @@ class RentalFunctions:
     def rent_delete(self, book, client_id):
         rental = self.last_rented_book(book.id, client_id)
 
-        for rent in self.rentals:
+        for rent in self.rentals.get_list:
             if rent == rental:
                 rental.book.state = 1
                 self.rentals.pop()

@@ -53,7 +53,7 @@ class GUI:
         self._func_book.update_book(book_id, title, author)
 
     def _list_books(self):
-        self.print_list(self._func_book.books)
+        self.print_list(self._func_book.books.list)
 
     """
     Client related ui functions
@@ -70,7 +70,7 @@ class GUI:
         self._func_client.update_client(client_id, name)
 
     def _list_clients(self):
-        self.print_list(self._func_client.clients)
+        self.print_list(self._func_client.clients.get_list)
 
     """
     Rent/Return Ui functions

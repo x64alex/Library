@@ -76,10 +76,10 @@ class BookFunctionsService:
 
     def most_rented_books(self):
         rented_books = []
-        books = self.func_books.books
+        books = self.func_books.books.get_list
         for book in books:
             rented_books.append([book, 0])
-        rentals = self.func_rentals.rentals
+        rentals = self.func_rentals.rentals.get_list
         for rental in rentals:
             for rent in rented_books:
                 if rent[0].id == rental.book_id:
@@ -94,7 +94,7 @@ class BookFunctionsService:
 
     def most_rented_author(self):
         rented_authors = []
-        books = self.func_books.books
+        books = self.func_books.books.get_list
         for book in books:
             ok = 1
             for rent in rented_authors:
@@ -104,9 +104,9 @@ class BookFunctionsService:
             if ok == 1:
                 rented_authors.append([book.author, 0])
 
-        for rental in self.func_rentals.rentals:
+        for rental in self.func_rentals.rentals.get_list:
             for rent in rented_authors:
-                book = self.func_books.func_books.return_book_id(rental.book_id)
+                book = self.func_books.return_book_id(rental.book_id)
                 if book.author == rent[0]:
                     rent[1] += 1
 

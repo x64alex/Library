@@ -59,7 +59,7 @@ class UI:
         self._func_book.update_book(book_id, title, author)
 
     def _list_books(self):
-        list_books = self._func_book.books
+        list_books = self._func_book.books.get_list()
         for book in list_books:
             print(book)
 
@@ -83,7 +83,7 @@ class UI:
         self._func_client.update_client(client_id, name)
 
     def _list_clients(self):
-        list_clients = self._func_client.clients
+        list_clients = self._func_client.clients.get_list()
         for client in list_clients:
             print(client)
 

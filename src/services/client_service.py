@@ -68,11 +68,11 @@ class ClientFunctionsServices:
 
     def most_active_clients(self):
         active_clients = []
-        clients = self.func_clients.clients
+        clients = self.func_clients.clients.get_list
         for client in clients:
             active_clients.append([client, 0])
 
-        for rental in self.func_rentals.rentals:
+        for rental in self.func_rentals.rentals.get_list:
             for client in active_clients:
                 if client[0].id == rental.client_id:
                     d = date(int(rental.rented[0:4]), int(rental.rented[5:7]), int(rental.rented[8:10]))
