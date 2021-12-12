@@ -1,0 +1,5 @@
+repository = text
+book = book.txt
+clients = client.txt
+rentals = rental.txt
+ui = GUI
