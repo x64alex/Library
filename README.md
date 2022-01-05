@@ -33,7 +33,7 @@ Create an application to:
 Implement persistent storage for all entities using file-based repositories. Also implement a `settings.properties` file to configure your application. Observations:
 1. You must implement two additional repository sets: one using text files for storage, and one using binary files (e.g. using object serialization with [Pickle](https://docs.python.org/3.8/library/pickle.html)).
 2. The program must work the same way using in-memory repositories, text-file repositories and binary file repositories.
-3. The decision of which repositories are employed, as well as the location of the repository input files will be made in the programâ€™s `settings.properties` file. An example is below:
+3. The decision of which repositories are employed, as well as the location of the repository input files will be made in the programs `settings.properties` file. An example is below:
 
     a. `settings.properties` for loading from memory (input files are not required):
     ```
