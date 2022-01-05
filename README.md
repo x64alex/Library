@@ -1,5 +1,5 @@
-###Library
-I.Write an application for a book library. The application will store:
+##Library
+Write an application for a book library. The application will store:
 - **Book**: `book_id`, `title`, `author`
 - **Client**: `client_id`, `name`
 - **Rental**: `rental_id`, `book_id`, `client_id`, `rented_date`, `returned_date`
@@ -15,6 +15,7 @@ Create an application to:
 5. Unlimited undo/redo functionality. Each step will undo/redo the previous operation performed by the user. Undo/redo operations must cascade and have a memory-efficient implementation (no superfluous list copying).
 
 ## Requirements
+#I.
 - You will solve one of the problems below using simple feature-driven development
 - Your program must provide a menu-driven console-based user interface. Implementation details are up to you
 - Implementation must employ layered architecture and classes
@@ -28,7 +29,8 @@ Create an application to:
 - Implement a graphical user interface, in addition to the required menu-driven UI. Program can be started with either UI, without changing the source code.
 
 
-II.Implement persistent storage for all entities using file-based repositories. Also implement a `settings.properties` file to configure your application. Observations:
+#II.
+Implement persistent storage for all entities using file-based repositories. Also implement a `settings.properties` file to configure your application. Observations:
 1. You must implement two additional repository sets: one using text files for storage, and one using binary files (e.g. using object serialization with [Pickle](https://docs.python.org/3.8/library/pickle.html)).
 2. The program must work the same way using in-memory repositories, text-file repositories and binary file repositories.
 3. The decision of which repositories are employed, as well as the location of the repository input files will be made in the programâ€™s `settings.properties` file. An example is below:
@@ -36,19 +38,20 @@ II.Implement persistent storage for all entities using file-based repositories. 
     a. `settings.properties` for loading from memory (input files are not required):
     ```
     repository = inmemory
-    cars = â€œâ€
-    clients = â€œâ€
-    rentals = â€œâ€
+    cars = ''
+    clients = ''
+    rentals = ''
     ```
     b. `settings.properties` for loading from binary files, for someone who also created a GUI:
     ```
     repository = binaryfiles
-    cars = â€œcars.pickleâ€
-    clients = â€œclients.pickleâ€
-    rentals = â€œrentals.pickleâ€
-    ui = â€œGUIâ€
+    cars = cars.pickle
+    clients = clients.pickle
+    rentals = rentals.pickle
+    ui = GUI
 
-III.Create a Python module that contains an iterable data structure, a sort method and a filter method, together with complete PyUnit unit tests (100% coverage). The module must be reusable in other projects.
+#III.
+Create a Python module that contains an iterable data structure, a sort method and a filter method, together with complete PyUnit unit tests (100% coverage). The module must be reusable in other projects.
 
 ## What you will need to do
 - Implement an iterable data structure. Study the [`__setItem__`](https://docs.python.org/3/reference/datamodel.html#object),`__getitem__`, `__delItem__`, `__next__` and `__iter__` Python methods.
