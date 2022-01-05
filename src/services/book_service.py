@@ -74,6 +74,9 @@ class BookFunctionsService:
     def search_book(self, value):
         return self.func_books.search_book(value)
 
+    def descending(self, book1, book2):
+        return int(book1.id) < int(book2.id)
+
     def most_rented_books(self):
         rented_books = []
         books = self.func_books.books.get_list

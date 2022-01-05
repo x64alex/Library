@@ -67,11 +67,14 @@ class DataStructure:
             interval //= 2
 
     def filter_function(self, acceptance_function, given_list=''):
+        new_list = []
         if given_list == '':
             given_list = self.list
         for el in given_list:
-            if not acceptance_function(el):
-                given_list.pop(given_list.index(el))
+            if acceptance_function(el):
+                new_list.append(el)
+
+        return new_list
 
 
 class Tests(unittest.TestCase):
@@ -105,19 +108,20 @@ class Tests(unittest.TestCase):
         def even(x):
             return x % 2 == 0
 
-        data_structure.filter_function(even)
-        assert data_structure.get_list == [4, 6, 8]
+        assert data_structure.filter_function(even) == [4, 6, 8]
+        data_structure.pop(0)
+        data_structure.pop(2)
         data_structure.__delitem__(1)
-        assert data_structure.get_list == [4, 8]
+        assert data_structure.get_list == [4, 7, 8]
         iter(data_structure)
         assert next(data_structure) == 4
-        assert next(data_structure) == 8
+        assert next(data_structure) == 7
         data_structure.append(2)
-        assert data_structure.get_list == [4, 8, 2]
+        assert data_structure.get_list == [4, 7, 8, 2]
         data_structure.pop()
-        assert data_structure.get_list == [4, 8]
-        assert data_structure.index(8) == 1
+        assert data_structure.get_list == [4, 7, 8]
+        assert data_structure.index(8) == 2
         data_structure.append(2)
         data_structure.append(3)
         data_structure.pop(1)
-        assert data_structure.get_list == [4, 2, 3]
+        assert data_structure.get_list == [4, 8, 2, 3]

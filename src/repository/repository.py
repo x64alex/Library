@@ -63,8 +63,11 @@ class BookFunctions:
         """
         if self.check_book_id(book.id):
             self.books.append(book)
-        else:
-            print("Bad book input!")
+
+        def ascending(book1, book2):
+            return int(book1.id) > int(book2.id)
+
+        self.books.shell_sort(ascending)
 
     def remove_book(self, book_id):
         """
@@ -98,15 +101,16 @@ class BookFunctions:
         list_books = []
         value = val.lower()
 
-        for book in self.books.get_list:
+        def found(book):
+
             id1 = book.id
             title = book.title.lower()
             author = book.author.lower()
 
             if id1.find(value) != -1 or title.find(value) != -1 or author.find(value) != -1:
-                list_books.append(book)
+                return True
 
-        return list_books
+        return self.books.filter_function(found)
 
 
 class BookFunctionsBin(BookFunctions):
@@ -174,7 +178,7 @@ class BookFunctionsTextFile(BookFunctions):
 
     def add_book(self, book):
         """
-        1. Do whatever the add method in the base class does
+          1. Do whatever the add method in the base class does
         2. Save the ingredients to file
         """
         super(BookFunctionsTextFile, self).add_book(book)
